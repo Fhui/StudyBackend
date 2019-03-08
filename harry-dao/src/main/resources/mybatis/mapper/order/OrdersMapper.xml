@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.harry.dao.OrdersMapper">
+    <resultMap id="ordersMap" type="com.harry.entity.order.Orders">
+        <id property="ordersId" column="orders_id"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+    <sql id="allColumns">
+        orders_id, name, price, user_id
+    </sql>
+    <sql id="selectAllColumns">
+        select
+        <include refid="allColumns"/>
+        from orders
+    </sql>
+
+    <select id="selectAllOrders" resultMap="ordersMap">
+        <include refid="selectAllColumns"/>
+    </select>
+
+
+</mapper>
