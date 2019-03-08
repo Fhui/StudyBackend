@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: dubbo-provider
+  aop:
+    proxy-target-class: true
+server:
+  port: 8061

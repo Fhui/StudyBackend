@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="harry-provider" version="1.0.0"/>
+    <dubbo:protocol host="192.168.1.164"/>
+    <dubbo:registry id="harry" group="harry" address="zookeeper://192.168.1.164:2181" />
+    <dubbo:consumer check="false"/>
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!--<dubbo:annotation package="com.harry.provider.service"/>-->
+    <dubbo:service  registry="harry" interface="com.harry.service.product.IPurchaseService" ref="purchaseService"/>
+    <bean id="purchaseService" class="com.harry.provider.service.CostServiceImpl"/>
+</beans>
