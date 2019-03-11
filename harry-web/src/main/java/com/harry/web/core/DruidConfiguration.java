@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DruidConfiguration {
 
+
     @Bean
     public ServletRegistrationBean statViewServlet(){
         //创建servlet注册实体

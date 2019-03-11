@@ -3,7 +3,7 @@ spring:
     name: study
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/harry?allowMultiQueries=true&useSSL=true&autoReconnect=true&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/harry?useSSL=true&useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
@@ -26,9 +26,21 @@ spring:
     testOnBorrow: false
     testOnReturn: false
     #配置监控统计拦截的filters，去掉后监控界面sql将无法统计,'wall'用于防火墙
-    filters: stat,wall,log4j,logback,log4j2,slf4j
+    filters: stat,wall,logback
   aop:
     proxy-target-class: true
+  kafka:
+    bootstrap-servers: 192.168.1.164:9092
+    producer:
+      topic: harryProduce
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      topic: harryProduce
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: kafka
+
 
 server:
   port: 8061
