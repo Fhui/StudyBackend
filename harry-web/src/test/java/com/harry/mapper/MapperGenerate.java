@@ -14,7 +14,7 @@ import java.util.Map;
  **/
 public class MapperGenerate {
 
-    private static String table = "orders";
+    private static String table = "hy_user";
 
 
     @Test
@@ -136,9 +136,9 @@ public class MapperGenerate {
     }
 
     private List<Map<String,String>> getColumns(String table) {
-        String url = "jdbc:mysql://localhost:3306/information_schema?allowMultiQueries=true&useSSL=true&autoReconnect=true&useUnicode=true&characterEncoding=utf-8" ;
+        String url = "jdbc:mysql://120.55.58.133:3306/information_schema?allowMultiQueries=true&useSSL=true&autoReconnect=true&useUnicode=true&characterEncoding=utf-8" ;
         String username = "root";
-        String password = "123456";
+        String password = "clannad";
 
         Connection con = null;
         Statement stmt = null;

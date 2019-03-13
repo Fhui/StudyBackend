@@ -5,10 +5,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo
 http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:application name="harry-consumer" version="1.0.0"/>
-    <dubbo:protocol host="192.168.1.164"/>
+    <!--<dubbo:protocol host="192.168.1.164"/>-->
+    <dubbo:protocol host="120.55.58.133"/>
     <dubbo:consumer check="false"/>
-    <dubbo:registry group="harry" address="zookeeper://192.168.1.164:2181" timeout="60000" check="false"/>
+    <!--<dubbo:registry group="harry" address="zookeeper://192.168.1.164:2181" timeout="60000" check="false"/>-->
+    <dubbo:registry group="harry" address="zookeeper://120.55.58.133:2181" timeout="100000" check="false"/>
     <!--<dubbo:annotation package="com.harry.service.product.impl"/>-->
-    <dubbo:reference id="purchaseService" interface="com.harry.service.product.IPurchaseService" check="false" timeout="12000"/>
+    <dubbo:reference id="purchaseService" interface="com.harry.service.product.IPurchaseService" check="false" timeout="100000"/>
 </beans>
 

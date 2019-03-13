@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @create 2019-03-08 17:00
  **/
 @Configuration
-public class DruidConfiguration {
+public class DruidConfig {
 
 
     @Bean

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.harry.dao.system.HyUserMapper">
+    <resultMap id="hyUserMap" type="com.harry.entity.system.HyUser">
+        <id property="userId" column="user_id"/>
+        <result property="userAccount" column="user_account"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="mobileNumber" column="mobile_number"/>
+        <result property="email" column="email"/>
+        <result property="weixinUnionid" column="weixin_unionid"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+    <sql id="allColumns">
+        user_id,user_account,user_name,password,mobile_number,email,weixin_unionid,status,create_time,modify_time
+    </sql>
+    <sql id="selectAllColumns">
+        select <include refid="allColumns"/>
+        from hy_user
+    </sql>
+
+    <select id="select" resultMap="hyUserMap" parameterType="java.lang.Integer">
+        <include refid="selectAllColumns"/>
+        where user_id = #{userId}
+    </select>
+
+    <insert id="insert" parameterType="hyUser">
+        insert into hy_user(
+            user_id,user_account,user_name,password,mobile_number,email,weixin_unionid,status,create_time,modify_time
+        ) values(
+            #{userId},#{userAccount},#{userName},#{password},#{mobileNumber},#{email},#{weixinUnionid},#{status},#{createTime},#{modifyTime}
+        )
+    </insert>
+
+    <update id="update" parameterType="hyUser">
+        update hy_user set
+            user_account = #{userAccount},
+            user_name = #{userName},
+            password = #{password},
+            mobile_number = #{mobileNumber},
+            email = #{email},
+            weixin_unionid = #{weixinUnionid},
+            status = #{status},
+            create_time = #{createTime},
+            modify_time = #{modifyTime}
+        where user_id = #{userId}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from hy_user where user_id = #{userId}
+    </delete>
+
+
+
+</mapper>
